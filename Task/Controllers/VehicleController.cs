@@ -50,11 +50,11 @@ namespace Task.Controllers
                 Year = vehicle.Year,
                 categoryname = vehicle.category != null ? vehicle.category.Name : null
             };
-            return Ok(vehicledto);
+            return Ok(vehicledto);//200
         }
 
         [HttpPost("addvehicle")]
-        public async Task<IActionResult> AddVehicleAsync([FromBody] PostVehicleDto dto)
+        public async Task<IActionResult> AddVehicleAsync([FromBody] PostVehicleDto dto)// route header body
         {
             if (!ModelState.IsValid)
             {
@@ -71,7 +71,7 @@ namespace Task.Controllers
             try
             {
                 _context.vehicles.Add(vehicle);
-                _context.SaveChanges();
+                _context.SaveChanges();  // apply to database
             }
             catch (Exception ex)
             {
@@ -88,24 +88,29 @@ namespace Task.Controllers
             {
                 return NotFound();
             }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+
             vehicle.Name = dto.Name;
             vehicle.Brand = dto.Brand;
             vehicle.Color = dto.Color;
             vehicle.Year = dto.Year;
             vehicle.CategoryId = dto.categoryId;
+
             try
             {
                 _context.vehicles.Update(vehicle);
                 _context.SaveChanges();
             }
+
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
+
             return Ok("edited successfully");
         }
 

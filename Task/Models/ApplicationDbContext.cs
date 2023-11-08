@@ -3,6 +3,7 @@ namespace Task.Models
 {
     public class ApplicationDbContext : DbContext
     {
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -17,5 +18,6 @@ namespace Task.Models
         public DbSet<Vehicle> vehicles { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<VehicleServices> vehicleServices { get; set; }
+
     }
 }
