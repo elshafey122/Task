@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Task.Models;
+using Task.Api.Models;
+using Task.Api.Services.Interfaces;
+using Task.Api.Services.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllers();
-
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

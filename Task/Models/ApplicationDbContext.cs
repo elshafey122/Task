@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-namespace Task.Models
+
+namespace Task.Api.Models
 {
     public class ApplicationDbContext : DbContext
     {
